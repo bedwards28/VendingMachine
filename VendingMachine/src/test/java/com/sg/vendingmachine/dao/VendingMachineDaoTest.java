@@ -15,6 +15,8 @@ import static org.junit.Assert.assertNull;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -25,7 +27,10 @@ public class VendingMachineDaoTest {
     VendingMachineDao dao;
     
     public VendingMachineDaoTest() {
-        dao = new VendingMachineDaoFileImpl();
+//        dao = new VendingMachineDaoFileImpl();
+        ApplicationContext ctx = 
+                new ClassPathXmlApplicationContext("applicationContext.xml");
+        dao = ctx.getBean("dao", VendingMachineDao.class);
     }
     
     @BeforeClass
