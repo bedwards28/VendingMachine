@@ -7,6 +7,7 @@ package com.sg.vendingmachine.service;
 
 import com.sg.vendingmachine.dao.VendingMachinePersistenceException;
 import com.sg.vendingmachine.dto.VmItem;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -32,4 +33,9 @@ public interface VendingMachineServiceLayer {
     VmItem decrementItemInventory(String name) throws 
             VendingMachinePersistenceException;
     
+    VmItem checkForItemInventory(VmItem item) throws 
+            NoItemInventoryException;
+    
+    boolean checkForEnoughFunds(VmItem item, BigDecimal fundsEntered) throws 
+            InsufficientFundsException;
 }

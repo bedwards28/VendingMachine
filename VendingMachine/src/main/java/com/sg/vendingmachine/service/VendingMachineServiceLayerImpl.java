@@ -76,8 +76,8 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         dao.editItem(name, 2, updatedInventoryString);
         auditDao.writeAuditEntry(dao.getItem(name).getName() + " inventory DECREASED BY 1");
         return dao.getItem(name);
-    }    
-    
+    }
+
     private void validateItemData(VmItem item) throws
             VendingMachineDataValidationException {
 
@@ -94,4 +94,28 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         }
     }
 
+    @Override
+    public VmItem checkForItemInventory(VmItem item) throws NoItemInventoryException {
+        int count = item.getNumInInventory();
+
+        if (count > 0) {
+            return item;
+        } else {
+            throw new NoItemInventoryException("ERROR: No inventory for selected item");
+        }
+    }
+
+    @Override
+    public boolean checkForEnoughFunds(VmItem item, BigDecimal fundsEntered) throws
+            InsufficientFundsException {
+        
+        if (fundsEntered.compareTo(item.getCost()) >= 0) {
+            return true;
+        } else {
+            throw new InsufficientFundsException(
+                    "Insufficient Funds");
+        }
+    }
+    
 }
+    

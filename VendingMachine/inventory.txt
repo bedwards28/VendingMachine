@@ -8,11 +8,11 @@ Mounds::0.01::0
 Twizzlers::2.75::74997
 Nestle Crunch Bar::1.75::100
 KitKat::1.75::498
-Starburst::1.25::400
+Starburst::1.25::399
 Almond Joy::0.05::1
-SweetTarts::1.25::20
-Twix::1.75::40
+SweetTarts::1.25::19
+Twix::1.75::39
 PayDay::1.55::0
 Junior Mints::1.25::49
 Werther's Original::2.75::500
-M&Ms::1.50::499
+M&Ms::1.50::498

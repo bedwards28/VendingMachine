@@ -30,14 +30,14 @@ public class VendingMachineController {
         Change userChange;
 
         try {
-            displayVendingMachineBanner();
+            view.displayVendingMachineBanner();
             displayVendingMachineContents();
 
             keepGoing = getUserContinueChoice(
                     "Would you like to purhcase any candy? Enter (Y)es or (N)o");
 
             if (!keepGoing) {
-                exitMessage();
+                view.displayExitBanner();
                 System.exit(0);
             }
 
@@ -51,11 +51,11 @@ public class VendingMachineController {
                     issueRefund(userChange);
                     break;
                 }
-
+                
                 try {
-                    candySelection = checkItemInventory(candySelection);
+                    candySelection = service.checkForItemInventory(candySelection);
                 } catch (NoItemInventoryException e) {
-                    displayNoInventoryMessage();
+                    view.displayNoInventoryMessage();
                     keepGoing = getUserContinueChoice(
                             "Would you like to select a different product? Enter (Y)es or (N)o");
 
@@ -68,9 +68,9 @@ public class VendingMachineController {
                 }
 
                 try {
-                    checkEnoughFunds(candySelection, cashInserted);
+                    service.checkForEnoughFunds(candySelection, cashInserted);
                 } catch (InsufficientFundsException e) {
-                    displayInsufficientFundsMessage(cashInserted);
+                    view.displayInsufficientFundsMessage(cashInserted);
                     keepGoing = getUserContinueChoice(
                             "Would you like to insert more funds? "
                             + "Enter (y)es to continue or (n)o for a refund");
@@ -85,12 +85,13 @@ public class VendingMachineController {
                 }
 
                 dispenseItemAndChange(candySelection, userChange);
-                updateItemInventory(candySelection);
+                service.decrementItemInventory(candySelection.getName());
                 break;
 
             } // end main while loop
 
-            exitMessage();
+            view.displayExitBanner();
+            
         } catch (VendingMachinePersistenceException e) {
             view.displayErrorMessage(e.getMessage());
         }
@@ -100,31 +101,6 @@ public class VendingMachineController {
     public VendingMachineController(VendingMachineView view, VendingMachineServiceLayer service) {
         this.view = view;
         this.service = service;
-    }
-
-    private boolean checkEnoughFunds(VmItem item, BigDecimal funds)
-            throws InsufficientFundsException {
-
-        if (funds.compareTo(item.getCost()) >= 0) {
-            return true;
-        } else {
-            throw new InsufficientFundsException(
-                    "Insufficient Funds");
-        }
-    }
-
-    private void displayNoInventoryMessage() {
-        view.displayNoInventoryBanner();
-    }
-
-    private VmItem checkItemInventory(VmItem item) throws NoItemInventoryException {
-        int count = item.getNumInInventory();
-
-        if (count > 0) {
-            return item;
-        } else {
-            throw new NoItemInventoryException("ERROR: No inventory for selected item");
-        }
     }
 
     private VmItem getCandySelection() throws VendingMachinePersistenceException {
@@ -157,21 +133,9 @@ public class VendingMachineController {
         return paymentBd;
     }
 
-    private void displayVendingMachineBanner() {
-        view.displayVendingMachineBanner();
-    }
-
     private void displayVendingMachineContents() throws VendingMachinePersistenceException {
         List<VmItem> itemList = service.getAllInventory();
         view.displayVendingMachineContents(itemList);
-    }
-
-    private VmItem getVmItem(String item) throws VendingMachinePersistenceException {
-        return service.getItem(item);
-    }
-
-    private void exitMessage() {
-        view.displayExitBanner();
     }
 
     private boolean getUserContinueChoice(String prompt) {
@@ -190,10 +154,6 @@ public class VendingMachineController {
         }
     } // end getUserContinueChoice
 
-    private void displayInsufficientFundsMessage(BigDecimal funds) {
-        view.displayInsufficientFundsBanner(funds);
-    }
-
     private BigDecimal getAdditionalFunds(BigDecimal funds) {
         BigDecimal additionalFunds = getFunds();
         return funds.add(additionalFunds);
@@ -210,11 +170,6 @@ public class VendingMachineController {
         view.displayUserChangeBanner();
         userChange.calculateRefund(candySelection);
         view.displayRefund(userChange);
-    }
-
-    private VmItem updateItemInventory(VmItem candySelection) throws
-            VendingMachinePersistenceException {
-        return service.decrementItemInventory(candySelection.getName());
     }
 
 }

@@ -108,11 +108,11 @@ public class VendingMachineView {
         io.print("Please make sure the name entered matches a candy from the list above or enter 'exit' to quit");
     }
 
-    public void displayNoInventoryBanner() {
+    public void displayNoInventoryMessage() {
         io.print("Product is out of stock");
     }
 
-    public void displayInsufficientFundsBanner(BigDecimal funds) {
+    public void displayInsufficientFundsMessage(BigDecimal funds) {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         io.print("Insufficient funds. The current balance avaiable is "
                 + formatter.format(funds));
