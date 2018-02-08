@@ -1,3 +1,18 @@
-Skittles::1.50::20
-Twix::1.75::40
+3 Musketeers::1.85::100
+Reese's Peanut Butter Cups::2.25::1000
+Sour Patch Kids::1.85::40
+Skittles::1.50::19
+Milk Duds::1.85::100
 Snickers King Size::2.50::40
+Mounds::0.01::0
+Twizzlers::2.75::74999
+Nestle Crunch Bar::1.75::100
+KitKat::1.75::499
+Starburst::1.25::400
+Almond Joy::0.05::0
+SweetTarts::1.25::20
+Twix::1.75::40
+PayDay::1.55::0
+Junior Mints::1.25::49
+Werther's Original::2.75::500
+M&Ms::1.50::499

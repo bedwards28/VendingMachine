@@ -43,8 +43,8 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
 
         dao.addItem(item.getName(), item);
 
-        auditDao.writeAuditEntry(
-                "Item \'" + item.getName() + "\' CREATED");
+//        auditDao.writeAuditEntry(
+//                "Item \'" + item.getName() + "\' CREATED");
 
     } // end createItem
 
@@ -64,7 +64,7 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     public VmItem removeItem(String name) throws
             VendingMachinePersistenceException {
         VmItem removedItem = dao.removeItem(name);
-        auditDao.writeAuditEntry("Item \'" + name + "\' REMOVED");
+//        auditDao.writeAuditEntry("Item \'" + name + "\' REMOVED");
         return removedItem;
     }
 
@@ -74,7 +74,7 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         currentInventory--;
         String updatedInventoryString = Integer.toString(currentInventory);
         dao.editItem(name, 2, updatedInventoryString);
-        auditDao.writeAuditEntry(dao.getItem(name).getName() + " inventory DECREASED BY 1");
+//        auditDao.writeAuditEntry(dao.getItem(name).getName() + " inventory DECREASED BY 1");
         return dao.getItem(name);
     }
 
