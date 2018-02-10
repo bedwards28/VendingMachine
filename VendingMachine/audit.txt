@@ -27,3 +27,29 @@
 2018-02-06T14:16:28.515 : Starburst inventory DECREASED BY 1
 2018-02-08T14:22:20.151 : decrementItemInventorySkittles
 2018-02-08T14:25:35.940 : decrementItemInventory: Almond Joy
+2018-02-09T13:57:10.234 : checkForItemInventory: VmItem{name=Mounds}
+2018-02-09T14:13:45.161 : decrementItemInventory: Skittles
+2018-02-09T14:14:02.663 : checkForItemInventory: Product: Mounds
+2018-02-09T14:21:56.918 : decrementItemInventory: Skittles
+2018-02-09T14:22:18.922 : checkForItemInventory: Product: MoundsProduct: Mounds
+2018-02-09T14:25:48.210 : checkForItemInventory: Product: Mounds
+2018-02-09T14:25:53.634 : decrementItemInventory: Skittles
+2018-02-09T14:37:03.230 : interface com.sg.vendingmachine.service.VendingMachineServiceLayerProduct: Mounds
+2018-02-09T14:37:12.172 : interface com.sg.vendingmachine.service.VendingMachineServiceLayerTwizzlers
+2018-02-09T14:37:58.138 : com.sg.vendingmachine.service.VendingMachineServiceLayerProduct: Mounds
+2018-02-09T14:38:02.179 : com.sg.vendingmachine.service.VendingMachineServiceLayerSkittles
+2018-02-09T14:39:15.119 : class org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint$MethodSignatureImplProduct: Mounds
+2018-02-09T14:39:22.431 : class org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint$MethodSignatureImplSkittles
+2018-02-09T15:57:16.651 : NoItemInventoryException
+2018-02-10T11:55:57.139 : decrementItemInventory: Skittles
+2018-02-10T12:00:06.672 : NoItemInventoryException: Product: Mounds
+2018-02-10T12:01:28.217 : NoItemInventoryException: Product: Mounds
+2018-02-10T12:01:40.264 : InsufficientFundsException: Product: Skittles0.50
+2018-02-10T12:03:42.507 : InsufficientFundsException: Product: Twizzlers: 0.10: 
+2018-02-10T12:06:13.485 : decrementItemInventory: Skittles
+2018-02-10T12:08:19.633 : NoItemInventoryException: Product: Mounds 
+2018-02-10T12:08:27.573 : InsufficientFundsException: Product: Twizzlers 0.25 
+2018-02-10T12:08:38.526 : decrementItemInventory: Twizzlers
+2018-02-10T12:10:39.689 : NoItemInventoryException: Product: PayDay 
+2018-02-10T12:10:49.993 : NoItemInventoryException: Product: Mounds 
+2018-02-10T12:10:55.639 : decrementItemInventory: Starburst

@@ -1,14 +1,14 @@
 3 Musketeers::1.85::100
 Reese's Peanut Butter Cups::2.25::1000
 Sour Patch Kids::1.85::40
-Skittles::1.50::19
+Skittles::1.50::17
 Milk Duds::1.85::100
 Snickers King Size::2.50::40
 Mounds::0.01::0
-Twizzlers::2.75::74999
+Twizzlers::2.75::74998
 Nestle Crunch Bar::1.75::100
 KitKat::1.75::499
-Starburst::1.25::400
+Starburst::1.25::399
 Almond Joy::0.05::0
 SweetTarts::1.25::20
 Twix::1.75::40

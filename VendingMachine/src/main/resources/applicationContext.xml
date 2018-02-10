@@ -58,6 +58,11 @@
                 method="createAuditEntry" 
                 pointcut="execution(* com.sg.vendingmachine.service.VendingMachineServiceLayer.decrementItemInventory(..))" 
             />
+            <aop:after-throwing 
+                method="createExceptionAuditEntry"
+                pointcut="execution(* com.sg.vendingmachine.service.VendingMachineServiceLayer.*(..))" 
+                throwing="ex"
+            />
         </aop:aspect>
     </aop:config>
     

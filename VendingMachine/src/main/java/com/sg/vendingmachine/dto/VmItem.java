@@ -85,7 +85,7 @@ public class VmItem {
 
     @Override
     public String toString() {
-        return "VmItem{" + "name=" + name + '}';
+        return "Product: " + name;
     }
     
     
