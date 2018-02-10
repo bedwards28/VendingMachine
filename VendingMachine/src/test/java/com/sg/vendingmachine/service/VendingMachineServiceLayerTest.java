@@ -5,10 +5,6 @@
  */
 package com.sg.vendingmachine.service;
 
-import com.sg.vendingmachine.dao.VendingMachineAuditDao;
-import com.sg.vendingmachine.dao.VendingMachineAuditDaoStubImpl;
-import com.sg.vendingmachine.dao.VendingMachineDao;
-import com.sg.vendingmachine.dao.VendingMachineDaoStubImpl;
 import com.sg.vendingmachine.dto.VmItem;
 import java.math.BigDecimal;
 import org.junit.After;
@@ -32,10 +28,6 @@ public class VendingMachineServiceLayerTest {
     private VendingMachineServiceLayer service;
     
     public VendingMachineServiceLayerTest() {
-//        VendingMachineDao dao = new VendingMachineDaoStubImpl();
-//        VendingMachineAuditDao auditDao = new VendingMachineAuditDaoStubImpl();
-//        service = new VendingMachineServiceLayerImpl(dao, auditDao);
-
         ApplicationContext ctx = 
                 new ClassPathXmlApplicationContext("applicationContext.xml");
         service = ctx.getBean("service", VendingMachineServiceLayer.class);
@@ -62,10 +54,13 @@ public class VendingMachineServiceLayerTest {
      */
     @Test
     public void testCreateItem() throws Exception {
-        VmItem item = new VmItem("Skittles");
+        VmItem item = new VmItem("New Candy");
         item.setCost("1.75");
         item.setNumInInventory(100);
         service.createItem(item);
+        
+        VmItem getItem = service.getItem(item.getName());
+        assertEquals(item, getItem);
     }
     
     @Test
@@ -101,7 +96,12 @@ public class VendingMachineServiceLayerTest {
      */
     @Test
     public void testGetAllInventory() throws Exception {
-        assertEquals(1, service.getAllInventory().size());
+        int size = service.getAllInventory().size();
+        VmItem newItem = new VmItem("New Candy");
+        newItem.setCost(BigDecimal.ONE);
+        newItem.setNumInInventory(100);
+        service.createItem(newItem);
+        assertEquals(size + 1, service.getAllInventory().size());
     }
 
     /**
